@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Vector3.h"
 
+
 std::istream& operator >> (std::istream &is, Vector3 &t)
 {
 	float tmp;

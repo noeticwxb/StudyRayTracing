@@ -3,6 +3,8 @@
 #include <cmath>
 #include <iostream>
 
+#include "config.h"
+
 struct Vector3
 {
 public:

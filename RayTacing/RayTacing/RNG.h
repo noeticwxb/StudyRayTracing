@@ -14,6 +14,7 @@ public:
 		mFloat_Max = 4294967295.0f;
 	}
 
+	//[0,1)
 	float operator()()
 	{
 		mSeed = mMult * mSeed;

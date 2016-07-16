@@ -222,8 +222,8 @@ inline Vector3 cross(const Vector3& v1, const Vector3& v2)
 {
 	Vector3 tmp;
 	tmp.mV[0] = v1.y() * v2.z() - v1.z() * v2.y();
-	tmp.mV[2] = v1.z() * v2.x() - v1.x() * v2.z();
-	tmp.mV[3] = v1.x() * v2.y() - v1.y() * v2.x();
+	tmp.mV[1] = v1.z() * v2.x() - v1.x() * v2.z();
+	tmp.mV[2] = v1.x() * v2.y() - v1.y() * v2.x();
 	return tmp;
 }
 inline float dot(const Vector3& v1, const Vector3& v2)

@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include "Image.h"
+#include "Vector2.h"
 
 using namespace std;
 

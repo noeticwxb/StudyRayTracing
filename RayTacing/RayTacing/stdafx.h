@@ -10,6 +10,6 @@
 #include <stdio.h>
 #include <tchar.h>
 
-
+#include "config.h"
 
 // TODO: reference additional headers your program requires here

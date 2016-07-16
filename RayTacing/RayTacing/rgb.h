@@ -53,6 +53,17 @@ public:
 
 	void clamp();
 
+	unsigned int toABGR() const
+	{
+		unsigned int r = unsigned(mR * 255) & 0x000000FF;
+		unsigned int g = unsigned(mG * 255) & 0x000000FF;
+		unsigned int b = unsigned(mB * 255) & 0x000000FF;
+
+		//return (r << 24) + (g << 16) + (b << 8) + 0xFF;	
+		int c = 0xFF000000 | (b << 16) | (g << 8 ) | r;
+		return c;
+	}
+
 	// not member function, so declare as friend
 	friend std::ostream& operator<<(std::ostream& out, const rgb& c);
 	friend rgb operator*(const rgb& c, float f);

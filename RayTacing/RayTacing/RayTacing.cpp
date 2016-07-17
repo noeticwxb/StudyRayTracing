@@ -29,9 +29,9 @@ public:
 		mShapes.push_back(s1);
 
 		Shape* s2 = NEW_PTR(Triangle)(
-			Vector3(300.0f, 600.0f, -990),
-			Vector3(0.0f, 100.0f, -990),
-			Vector3(450.0f, 20.0f, -990),
+			Vector3(300.0f, 600.0f, -800),
+			Vector3(0.0f, 100.0f, -1000),
+			Vector3(450.0f, 20.0f, -1000),
 			rgb(0.8f, 0.2f, 0.2f));
 
 		//Shape* s2 = NEW_PTR(Triangle)(
@@ -49,7 +49,7 @@ public:
 
 	void Render()
 	{
-		HitTest();
+		//HitTest();
 
 		HitRecord rec;
 		bool is_a_hit;

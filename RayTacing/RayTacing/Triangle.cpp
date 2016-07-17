@@ -44,7 +44,7 @@ bool Triangle::hit(const Ray& r, float tmin, float tmax, float time, HitRecord& 
 	float BLKC = B*L - K*C;
 
 	float gamma = (I*AKJB + H*JCAL + G*BLKC) / denom;
-	if (gamma <= 0.0f || gamma >= 1.0f)
+	if (gamma <= 0.0f || ( (beta + gamma) >= 1.0f) ) 
 	{
 		return false;
 	}
@@ -98,7 +98,7 @@ bool Triangle::shadowHit(const Ray& r, float tmin, float tmax, float time) const
 	float BLKC = B*L - K*C;
 
 	float gamma = (I*AKJB + H*JCAL + G*BLKC) / denom;
-	if (gamma <= 0.0f || gamma >= 1.0f)
+	if (gamma <= 0.0f || ((beta + gamma) >= 1.0f))
 	{
 		return false;
 	}

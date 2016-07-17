@@ -19,7 +19,7 @@ bool Sphere::hit(const Ray& r, float tmin, float tmax, float time, HitRecord& re
 
 	if (discriminant > 0)
 	{
-		discriminant = sqrt(mRadius);
+		discriminant = sqrt(discriminant);
 		double t = (-b - discriminant) / (2 * a);
 
 		if (t < tmin)
@@ -52,7 +52,7 @@ bool Sphere::shadowHit(const Ray& r, float tmin, float tmax, float time) const
 
 	if (discriminant > 0)
 	{
-		discriminant = sqrt(mRadius);
+		discriminant = sqrt(discriminant);
 		double t = (-b - discriminant) / (2 * a);
 
 		if (t < tmin)

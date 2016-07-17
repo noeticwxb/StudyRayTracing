@@ -13,7 +13,7 @@
 #include <glut.h>
 
 // The Following Directive Fixes The Problem With Extra Console Window
-#pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
+//#pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
 
 // Global Variables
 bool g_fullscreen;     // Fullscreen Mode ON/OFF (When g_gamemode Is OFF)
@@ -29,11 +29,18 @@ public:
 		mShapes.push_back(s1);
 
 		Shape* s2 = NEW_PTR(Triangle)(
-			Vector3(300.0f, 600.0f, -800),
-			Vector3(0.0f, 100.0f, -1000),
-			Vector3(450.0f, 20.0f, -1000),
+			Vector3(300.0f, 600.0f, -990),
+			Vector3(0.0f, 100.0f, -990),
+			Vector3(450.0f, 20.0f, -990),
 			rgb(0.8f, 0.2f, 0.2f));
-		//mShapes.push_back(s2);
+
+		//Shape* s2 = NEW_PTR(Triangle)(
+		//	Vector3(250.0f, 250.0f, -1000),
+		//	Vector3(250.0f, 100.0f, -1000),
+		//	Vector3(500.0f, 0.0f, -1000),
+		//	rgb(0.8f, 0.2f, 0.2f));
+
+		mShapes.push_back(s2);
 
 		mImage = NEW_PTR(Image)(CanvasSize, CanvasSize);
 
@@ -42,6 +49,8 @@ public:
 
 	void Render()
 	{
+		HitTest();
+
 		HitRecord rec;
 		bool is_a_hit;
 		float tmax;
@@ -84,6 +93,28 @@ public:
 		std::ofstream file("d:\\ray_image.ppm", std::ios::binary);
 		mImage->writePPM(file);
 
+	}
+
+	void HitTest()
+	{
+		HitRecord rec;
+		int i = 250;
+		int j = 250;
+		float tmax = 100000;
+		Vector3 dir(0, 0, -1);	// direction of viewing rays
+
+		Ray r(Vector3((float)i, (float)j, 0.0f), dir);
+
+		// loop over list of shapes
+		for (size_t k = 0; k < mShapes.size(); ++k)
+		{
+			if (mShapes[k]->hit(r, 0.000001f, tmax, 0, rec))
+			{
+				//tmax = rec.t;
+				//is_a_hit = true;
+				std::cout << r.pointAtParameter(rec.t) << std::endl;
+			}
+		}
 	}
 
 	Texture2D* GetTexture2D(){ return mTexture; }
@@ -132,9 +163,9 @@ void render(void)
 	glColor3f(1, 1, 1);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);glVertex3f(0, 0, 0);
-		glTexCoord2f(1, 0);glVertex3f(1, 0, 0);
+		glTexCoord2f(0, 1);glVertex3f(1, 0, 0);
 		glTexCoord2f(1, 1);glVertex3f(1, 1, 0);
-		glTexCoord2f(0, 1); glVertex3f(0, 1, 0);
+		glTexCoord2f(1, 0); glVertex3f(0, 1, 0);
 	glEnd();
 
 
